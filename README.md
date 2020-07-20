@@ -10,24 +10,26 @@ Implementation of a SMS(Inbound/Outbound) service in Django with Basic authentic
     - virtualenv -p python3 venv
     - source venv/bin/activate
 2. Clone git repo
-    - git clone <>
+    - git clone https://github.com/pratyushkhatait/sms-service-django.git
 3. Install requirements.txt
     - pip install -r requirements.txt
 4. Django runserver
     - python manage.py runserver
 5. Hit Inbound SMS API
     - curl -X POST \
-  'http://127.0.0.1:8000/sms-service/inbound/sms/?username=plivo1&password=20S0KPNOIM' \
+  http://127.0.0.1:8000/sms-service/inbound/sms/ \
+  -H 'Authorization: Basic cGxpdm8xOjIwUzBLUE5PSU0=' \
   -H 'Content-Type: application/json' \
   -H 'cache-control: no-cache' \
   -d '{
 	"_from": "4924195509100",
-	"_to": "4924195509008",
+	"_to": "4924195509029",
 	"_text": "STOP\n"
 }'
 6. Hit Outbound SMS API
     - curl -X POST \
-  'http://127.0.0.1:8000/sms-service/outbound/sms/?username=plivo1&password=20S0KPNOIM' \
+  http://127.0.0.1:8000/sms-service/outbound/sms/ \
+  -H 'Authorization: Basic cGxpdm8xOjIwUzBLUE5PSU0=' \
   -H 'Content-Type: application/json' \
   -H 'cache-control: no-cache,no-cache' \
   -d '{

@@ -5,7 +5,6 @@ from rest_framework.serializers import ValidationError
 from rest_framework import status
 from rest_framework.response import Response
 from django.http import HttpResponse
-from sms.handle.authentication import ValidationMixin
 from sms.serializers import InboundSerializer, OutboundSerializer
 from sms.utilities.redis_utils import redis
 from sms.config import CACHE_TTL
@@ -22,7 +21,7 @@ class Ping(APIView):
         return HttpResponse("Pong")
 
 
-class InboundSMSView(APIView, ValidationMixin):
+class InboundSMSView(APIView):
     serializer_class = InboundSerializer
     http_method_names = ['post']
 
@@ -71,7 +70,7 @@ class InboundSMSView(APIView, ValidationMixin):
         return Response(resp, status=status.HTTP_200_OK)
 
 
-class OutboundSMSView(APIView, ValidationMixin):
+class OutboundSMSView(APIView):
     serializer_class = OutboundSerializer
     http_method_names = ['post']
 
