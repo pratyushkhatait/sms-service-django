@@ -1,5 +1,6 @@
 # SMS-Service #
 Implementation of a SMS(Inbound/Outbound) service in Django with Basic authentication.
+Deployed in Heroku (App: sms-service-django)
 ## Dependencies ##
     -Python3
     -Django
@@ -17,18 +18,18 @@ Implementation of a SMS(Inbound/Outbound) service in Django with Basic authentic
     - python manage.py runserver
 5. Hit Inbound SMS API
     - curl -X POST \
-  http://127.0.0.1:8000/sms-service/inbound/sms/ \
+  https://sms-service-django.herokuapp.com/sms-service/inbound/sms/ \
   -H 'Authorization: Basic cGxpdm8xOjIwUzBLUE5PSU0=' \
   -H 'Content-Type: application/json' \
   -H 'cache-control: no-cache' \
   -d '{
 	"_from": "4924195509100",
 	"_to": "4924195509029",
-	"_text": "STOP\n"
+	"_text": "HI"
 }'
 6. Hit Outbound SMS API
     - curl -X POST \
-  http://127.0.0.1:8000/sms-service/outbound/sms/ \
+  https://sms-service-django.herokuapp.com/sms-service/outbound/sms/ \
   -H 'Authorization: Basic cGxpdm8xOjIwUzBLUE5PSU0=' \
   -H 'Content-Type: application/json' \
   -H 'cache-control: no-cache,no-cache' \
